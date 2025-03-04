@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedGem - Video Stock Market</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header with Ticker -->
+    <header class="header">
+        <img src="https://i.ibb.co/nNsx1p1c/redgem-logo.png" width="150" height="50">
+        <div class="ticker">
+            <span>Video 1: $2.45 <span class="gain">+15%</span> | </span>
+            <span>Video 2: $3.20 <span class="gain">+32%</span> | </span>
+            <span>Video 3: $1.80 <span class="loss">-5%</span> | </span>
+            <span>Video 4: $4.50 <span class="gain">+20%</span></span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Web-like UI for Video Nodes -->
+        <div class="web-container">
+            <canvas id="webCanvas"></canvas>
+            <div class="video-node" data-id="1" style="top: 20%; left: 20%;">
+                <span>$2.45 <span class="gain">+15%</span></span>
+                <div class="preview">
+                    <iframe title="Video 1 Preview" src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1&controls=0"></iframe>
+                </div>
+            </div>
+            <div class="video-node" data-id="2" style="top: 30%; left: 60%;">
+                <span>$3.20 <span class="gain">+32%</span></span>
+                <div class="preview">
+                    <iframe title="Video 2 Preview" src="https://www.youtube.com/embed/3tmd-Claq34?mute=1&controls=0"></iframe>
+                </div>
+            </div>
+            <div class="video-node" data-id="3" style="top: 60%; left: 30%;">
+                <span>$1.80 <span class="loss">-5%</span></span>
+                <div class="preview">
+                    <iframe title="Video 3 Preview" src="https://www.youtube.com/embed/9bZkp7q19f0?mute=1&controls=0"></iframe>
+                </div>
+            </div>
+            <div class="video-node" data-id="4" style="top: 70%; left: 70%;">
+                <span>$4.50 <span class="gain">+20%</span></span>
+                <div class="preview">
+                    <iframe title="Video 4 Preview" src="https://www.youtube.com/embed/kJQP7kiw5Fk?mute=1&controls=0"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stock Dashboard Modal -->
+        <div id="performanceModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">×</span>
+                <div class="modal-header">
+                    <h3 id="modalTitle">Video Asset</h3>
+                    <div class="modal-stats">
+                        <span>Value: <strong id="videoValue">-</strong></span>
+                        <span>Change: <strong id="videoChange">-</strong></span>
+                    </div>
+                </div>
+                <div class="modal-layout">
+                    <div class="video-player">
+                        <iframe id="modalVideo" title="Selected Video"></iframe>
+                    </div>
+                    <div class="analytics-section">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #1a2525;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0d1a1a;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 5;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00cc66;
+    text-transform: uppercase;
+}
+
+.ticker {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: scroll 20s linear infinite;
+}
+
+.ticker span {
+    margin-right: 15px;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.main-content {
+    height: calc(100vh - 50px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.web-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    background: #1a2525;
+}
+
+#webCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-node {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #2e3b3b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 204, 102, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-node:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 204, 102, 0.5);
+}
+
+.video-node.zoom {
+    animation: zoomIn 0.4s ease-in-out forwards;
+}
+
+.video-node span {
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.gain { color: #00cc66; }
+.loss { color: #ff4444; }
+
+.preview {
+    display: none;
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 120px;
+    background: #0d1a1a;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+.preview iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-node:hover .preview {
+    display: block;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #263333;
+    padding: 20px;
+    width: 700px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 204, 102, 0.3);
+    animation: slideIn 0.3s ease-out;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #00cc66;
+}
+
+.modal-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+}
+
+.modal-stats span strong {
+    font-weight: bold;
+}
+
+.modal-layout {
+    display: flex;
+    gap: 20px;
+}
+
+.video-player {
+    flex: 1;
+}
+
+#modalVideo {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 5px;
+}
+
+.analytics-section {
+    flex: 1;
+    background: #1a2525;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.close:hover {
+    color: #00cc66;
+}
+
+.video-details p {
+    margin: 10px 0;
+}
+
+/* Animations */
+@keyframes zoomIn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-node {
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+    }
+    .modal-content {
+        width: 90%;
+    }
+    .modal-layout {
+        flex-direction: column;
+    }
+    .preview {
+        width: 150px;
+        height: 90px;
+        top: -110px;
+    }
+    #modalVideo {
+        height: 150px;
+    }
+    .ticker {
+        font-size: 12px;
+    }
+}
