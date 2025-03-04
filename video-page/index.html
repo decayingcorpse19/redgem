@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedGem</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="https://i.ibb.co/nNsx1p1c/redgem-logo.png" width="150" height="50">
+        <div class="search-bar">
+            <input type="text" placeholder="Search videos...">
+            <select>
+                <option>Trending</option>
+                <option>High Value</option>
+                <option>New Listings</option>
+            </select>
+        </div>
+        <div class="user-profile">
+            <span>User123</span>
+            <span class="portfolio-btn">Portfolio</span>
+            <span class="notifications">🔔 2</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Video Player Section -->
+        <section class="video-panel">
+            <div class="video-player">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-meta">
+                <h2>Sample Video Title</h2>
+                <p>Creator: VideoCreator | 1M views</p>
+                <div class="video-actions">
+                    <button class="invest-btn" onclick="openInvestModal()">Invest</button>
+                    <button>Like</button>
+                    <button>Dislike</button>
+                    <button>Share</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section class="analytics-panel">
+            <h3>Asset Value</h3>
+            <canvas id="stockChart"></canvas>
+            <div class="stats">
+                <p>Current Price: <span class="price">$2.45</span></p>
+                <p>Daily Change: <span class="gain">+15%</span></p>
+                <p>Volume: 500k min</p>
+                <p>Market Cap: 1.2M points</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h3>Watchlist</h3>
+        <ul>
+            <li>Cat Meme #5 - $3.20 <span class="gain">+32%</span></li>
+            <li>Dance Video - $1.80 <span class="loss">-5%</span></li>
+        </ul>
+        <h3>Hot Picks</h3>
+        <ul>
+            <li>Undervalued Gem - $0.90</li>
+            <li>Trending Now - $4.50</li>
+        </ul>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">About RedGem</a>
+            <a href="#">How It Works</a>
+            <a href="#">Terms</a>
+        </div>
+        <div class="ticker">Cat Meme #5: +32% today | Dance Video: -5% | Viral Clip: +20%</div>
+    </footer>
+
+    <!-- Invest Modal -->
+    <div id="investModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeInvestModal()">&times;</span>
+            <h3>Invest in Sample Video</h3>
+            <p>Current Price: $2.45</p>
+            <input type="range" min="1" max="100" value="50" id="investSlider" oninput="updateInvestValue(this.value)">
+            <p>Invest: <span id="investValue">50</span> points</p>
+            <button onclick="confirmInvest()">Confirm</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
